@@ -34,7 +34,7 @@ class JWT {
 
       final algorithm = JWTAlgorithm.fromName(header['alg']);
 
-      final body = utf8.encode(parts[0] + '.' + parts[1]);
+      final body = ascii.encode(parts[0] + '.' + parts[1]);
       final signature = base64Url.decode(base64Padded(parts[2]));
 
       if (!algorithm.verify(key, body, signature)) {

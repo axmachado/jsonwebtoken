@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:crypto/crypto.dart';
@@ -53,7 +52,7 @@ class HMACAlgorithm extends JWTAlgorithm {
     assert(key is SecretKey, 'key must be a SecretKey');
     final secretKey = key as SecretKey;
 
-    final hmac = Hmac(_getHash(name), utf8.encode(secretKey.key));
+    final hmac = Hmac(_getHash(name), secretKey.key);
     return hmac.convert(body).bytes;
   }
 
