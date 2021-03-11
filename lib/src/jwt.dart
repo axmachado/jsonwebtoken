@@ -172,7 +172,7 @@ class JWT {
       }
       if (notBefore != null) {
         payload['nbf'] = secondsSinceEpoch(DateTime.now().add(notBefore));
-        if (payload['iat'] > payload['nbf']) {
+        if (payload['iat'] < payload['nbf']) {
           payload['iat'] = payload['nbf'];
         }
       }
